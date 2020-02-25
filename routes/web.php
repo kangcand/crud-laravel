@@ -98,8 +98,30 @@ Route::get('eloquent',function()
 Route::get('latihan-eloquent',function()
 {
     $mahasiswa = Mahasiswa::with('wali','dosen','hobi')
-    ->where('nama','=','Dadang')
-    ->first();
+                    ->where('nama','=','Dadang')
+                    ->first();
     // dd($mahasiswa);
     return view('eloquent2',compact('mahasiswa'));
 });
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Blade Template
+Route::get('beranda',function()
+{
+    return view('beranda');
+});
+
+Route::get('tentang',function()
+{
+    return view('tentang');
+});
+
+Route::get('kontak',function()
+{
+    return view('kontak');
+});
+
+// CRUD
+Route::resource('dosen','DosenController');
