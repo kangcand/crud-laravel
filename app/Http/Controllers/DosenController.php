@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class DosenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $dosen = Dosen::all();
@@ -26,9 +26,10 @@ class DosenController extends Controller
     public function store(Request $request)
     {
         $dosen = new Dosen();
-        $dosen->nama = $request->nama;
-        $dosen->nipd = $request->nipd;
+        $dosen->nama = $request->a;
+        $dosen->nipd = $request->b;
         $dosen->save();
+        // dd($dosen);
         return redirect()->route('dosen.index')
                ->with(['message'=>'Dosen berhasil dibuat']);
     }
