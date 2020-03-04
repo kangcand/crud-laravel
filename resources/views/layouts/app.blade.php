@@ -10,14 +10,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('select2/dist/js/select2.min.js') }}"></script>
+    @stack('scripts')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('select2/dist/css/select2.min.css')}}" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
@@ -36,9 +38,27 @@
                         @guest
                         @else
                             <li class="nav-item">
+                                <a href="{{route('wali.index')}}"
+                                class="nav-link  {{ (request()->is('wali*')) ? 'active' : '' }}">
+                                    Wali
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{route('dosen.index')}}"
-                                class="nav-link">
+                                class="nav-link  {{ (request()->is('dosen*')) ? 'active' : '' }}">
                                     Dosen
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('mahasiswa.index')}}"
+                                class="nav-link {{ (request()->is('mahasiswa*')) ? 'active' : '' }}">
+                                    Mahasiswa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('hobi.index')}}"
+                                class="nav-link {{ (request()->is('hobi*')) ? 'active' : '' }}">
+                                    Hobi
                                 </a>
                             </li>
                         @endguest

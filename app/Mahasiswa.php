@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
 {
-    public $guard = [];
+    public $fillable = ['nama','nim','id_dosen'];
     public $timestamps = true;
 
     public function dosen()

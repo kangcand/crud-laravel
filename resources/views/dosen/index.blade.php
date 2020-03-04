@@ -37,9 +37,9 @@
                                         <form action="{{route('dosen.destroy',$data->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{route('dosen.show',$data->id)}}">Lihat</a> |
-                                            <a href="{{route('dosen.edit',$data->id)}}">Edit</a> |
-                                            <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')">
+                                            <a href="{{route('dosen.show',$data->id)}}" class="btn btn-sm btn-success">Lihat</a> |
+                                            <a href="{{route('dosen.edit',$data->id)}}" class="btn btn-sm btn-warning">Edit</a> |
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">
                                                 Hapus
                                             </button>
                                         </form>
