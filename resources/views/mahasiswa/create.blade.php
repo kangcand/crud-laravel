@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Hobi</label>
-                            <select class="js-multiple form-control" name="hobi[]" multiple="multiple">
+                            <select class="form-control" id="js-multiple" name="hobi[]" multiple="multiple">
                                 @foreach ($hobi as $data)
                                     <option value="{{$data->id}}">{{$data->hobi}}</option>
                                 @endforeach
@@ -50,7 +50,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('.js-multiple').select2();
+            $('#js-multiple').select2();
         });
     </script>
 @endpush

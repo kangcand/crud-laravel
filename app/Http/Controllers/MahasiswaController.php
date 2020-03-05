@@ -9,6 +9,10 @@ use DB;
 use App\Hobi;
 class MahasiswaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -72,7 +76,7 @@ class MahasiswaController extends Controller
     public function destroy($id)
     {
         $mhs = Mahasiswa::findOrFail($id);
-        $mhs->hobi()->detach($request->hobi);
+        $mhs->hobi()->detach();
         $mhs->delete();
         return redirect()->route('mahasiswa.index')
                 ->with(['message'=>'Data berhasil dihapus']);
